@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ebubekir Sıddık Pekmez — CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:  #0b0f1a;
+  --navy2: #111827;
+  --navy3: #1a2235;
+  --gold:  #c9a55a;
+  --gold2: #e2c47a;
+  --gold3: #f0d89a;
+  --ivory: #f5f0e8;
+  --ivory2:#ede8de;
+  --muted: rgba(245,240,232,0.55);
+  --line:  rgba(201,165,90,0.22);
+}
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #080c15;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px 60px;
+  min-height: 100vh;
+}
+.cv-page {
+  width: 210mm;
+  max-width: 920px;
+  background: var(--navy);
+  display: flex;
+  position: relative;
+  margin-bottom: 32px;
+  overflow: hidden;
+}
+.sidebar {
+  width: 240px;
+  min-width: 240px;
+  background: var(--navy2);
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+.sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold2), var(--gold3), var(--gold));
+}
+.photo-wrap {
+  padding: 16px 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+}
+.photo-frame {
+  width: 100%;
+  height: 210px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+/* gold stripe at shoulder level */
+.photo-frame::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 52px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 2%, var(--gold) 18%, var(--gold2) 50%, var(--gold) 82%, transparent 98%);
+  box-shadow: 0 0 14px rgba(201,165,90,0.55), 0 0 3px rgba(201,165,90,0.8);
+  z-index: 2;
+}
+/* second thin stripe for depth */
+.photo-frame::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 46px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 8%, rgba(240,216,154,0.4) 25%, rgba(240,216,154,0.6) 50%, rgba(240,216,154,0.4) 75%, transparent 92%);
+  z-index: 2;
+}
+.photo-frame img {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 260px;
+  object-fit: cover;
+  object-position: center 28%;
+  z-index: 1;
+  -webkit-mask-image: linear-gradient(to bottom, black 68%, transparent 92%);
+  mask-image: linear-gradient(to bottom, black 68%, transparent 92%);
+}
+.cv-name-side {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--ivory); text-align: center; line-height: 1.4;
+  margin-top: 12px;
+}
+.cv-title-side {
+  font-size: 9.5px; font-weight: 400;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); text-align: center; margin-top: 5px;
+}
+.s-section {
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--line);
+}
+.s-section:last-child { border-bottom: none; }
+.s-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 3.5px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.s-heading::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+.c-item {
+  display: flex; align-items: flex-start; gap: 9px;
+  margin-bottom: 9px; font-size: 10.5px;
+  color: var(--muted); line-height: 1.55;
+}
+.c-item svg { width: 13px; min-width: 13px; margin-top: 2px; color: var(--gold); opacity: 0.8; }
+.edu-block { margin-bottom: 13px; }
+.edu-level { font-size: 8.5px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; font-weight: 600; }
+.edu-school { font-size: 10.5px; color: var(--ivory); font-weight: 500; line-height: 1.4; }
+.edu-dept { font-size: 10px; color: var(--muted); line-height: 1.4; }
+.edu-date { font-size: 9.5px; color: var(--gold); margin-top: 2px; opacity: 0.75; }
+.skill-row {
+  display: flex; align-items: flex-start; gap: 8px;
+  margin-bottom: 8px; font-size: 10.5px;
+  color: var(--muted); line-height: 1.5;
+}
+.skill-row::before { content: '◆'; font-size: 5px; color: var(--gold); margin-top: 5px; min-width: 8px; }
+.ref-block { margin-bottom: 11px; }
+.ref-name { font-size: 11px; font-weight: 600; color: var(--ivory); }
+.ref-role { font-size: 9.5px; color: var(--muted); margin: 1px 0; }
+.ref-phone { font-size: 10px; color: var(--gold); }
+/* MAIN */
+.main {
+  flex: 1; padding: 40px 38px 44px;
+  position: relative; z-index: 1;
+}
+.main::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold2), var(--gold3), var(--gold));
+}
+.name-block {
+  margin-bottom: 26px; padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.main-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px; font-weight: 300;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--ivory); line-height: 1.05;
+}
+.main-name span { font-weight: 700; color: var(--gold2); }
+.main-title {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 5px; text-transform: uppercase;
+  color: var(--muted); margin-top: 8px;
+}
+.gold-dot {
+  display: inline-block; width: 5px; height: 5px;
+  border-radius: 50%; background: var(--gold);
+  margin: 0 8px; vertical-align: middle;
+}
+.m-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold); margin: 22px 0 14px;
+  display: flex; align-items: center; gap: 12px;
+}
+.m-heading::before { content: ''; width: 22px; height: 1px; background: var(--gold); }
+.m-heading::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+.about-text {
+  font-size: 11px; color: var(--muted);
+  line-height: 1.9; text-align: justify; font-weight: 300;
+}
+.about-text strong { color: var(--ivory2); font-weight: 500; }
+.exp-item { display: flex; gap: 16px; margin-bottom: 18px; }
+.exp-left { display: flex; flex-direction: column; align-items: center; min-width: 44px; }
+.exp-year {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px; font-weight: 600;
+  color: var(--gold); letter-spacing: 1px; line-height: 1; white-space: nowrap;
+}
+.exp-dot { width: 8px; height: 8px; border-radius: 50%; border: 2px solid var(--gold); background: var(--navy); margin-top: 8px; flex-shrink: 0; }
+.exp-line { width: 1px; flex: 1; background: var(--line); margin-top: 4px; }
+.exp-right { flex: 1; padding-bottom: 6px; }
+.exp-company { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 600; color: var(--ivory); line-height: 1.2; margin-bottom: 1px; }
+.exp-role { font-size: 10px; font-weight: 400; letter-spacing: 0.5px; color: var(--gold); font-style: italic; margin-bottom: 9px; opacity: 0.85; }
+.exp-bullets { list-style: none; }
+.exp-bullets li { font-size: 10.5px; color: var(--muted); line-height: 1.75; margin-bottom: 4px; padding-left: 12px; position: relative; text-align: justify; font-weight: 300; }
+.exp-bullets li::before { content: '–'; position: absolute; left: 0; color: var(--gold); font-size: 12px; line-height: 1.5; }
+.exp-bullets li strong { color: var(--ivory2); font-weight: 500; }
+.staj-block { background: var(--navy3); border: 1px solid var(--line); border-left: 2px solid var(--gold); padding: 10px 14px; border-radius: 2px; }
+.staj-title { font-size: 11px; font-weight: 600; color: var(--ivory); margin-bottom: 4px; }
+.staj-text { font-size: 10.5px; color: var(--muted); line-height: 1.7; font-weight: 300; }
+/* CERT PAGE */
+.cert-page {
+  width: 210mm; max-width: 920px;
+  background: var(--navy);
+  padding: 50px 48px 56px;
+  margin-bottom: 32px;
+  position: relative; overflow: hidden;
+}
+.cert-page::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold2), var(--gold3), var(--gold));
+}
+.cert-page-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; letter-spacing: 8px; text-transform: uppercase; color: var(--ivory); margin-bottom: 6px; }
+.cert-page-title span { color: var(--gold2); font-weight: 600; }
+.cert-subtitle { font-size: 10px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.cert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.cert-card { background: var(--navy2); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; position: relative; transition: border-color 0.2s, transform 0.2s; }
+.cert-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+.cert-card:hover { border-color: rgba(201,165,90,0.5); transform: translateY(-2px); }
+.cert-visual { width: 100%; height: 85px; overflow: hidden; background: var(--navy3); position: relative; cursor: zoom-in; }
+.cert-visual img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.92; transition: opacity 0.2s; }
+.cert-card:hover .cert-visual img { opacity: 1; }
+.cert-fallback { width: 100%; height: 100%; display: none; align-items: center; justify-content: center; font-size: 10px; color: var(--muted); text-align: center; padding: 8px; line-height: 1.5; font-weight: 500; letter-spacing: 0.5px; }
+.cert-info { padding: 10px 12px 12px; }
+.cert-issuer { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-weight: 700; color: var(--ivory); letter-spacing: 0.5px; margin-bottom: 2px; }
+.cert-name { font-size: 9.5px; color: var(--gold); line-height: 1.45; font-weight: 400; letter-spacing: 0.3px; opacity: 0.85; }
+@media print {
+  body { background: white; padding: 0; }
+  .cv-page, .cert-page { box-shadow: none; width: 100%; margin: 0; page-break-after: always; }
+}
+
+/* ── LIGHTBOX ── */
+.cert-visual { cursor: zoom-in; }
+.cert-visual:hover img { opacity: 1; transform: scale(1.02); }
+.cert-visual img { transition: opacity 0.2s, transform 0.2s; }
+#lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(8,12,21,0.93);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+}
+#lightbox.active { display: flex; }
+#lightbox img {
+  max-width: 88vw;
+  max-height: 88vh;
+  object-fit: contain;
+  border: 1px solid rgba(201,165,90,0.35);
+  border-radius: 4px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.7);
+  animation: lbIn 0.2s ease;
+}
+@keyframes lbIn { from { opacity:0; transform:scale(0.9); } to { opacity:1; transform:scale(1); } }
+#lightbox-close {
+  position: fixed;
+  top: 24px; right: 32px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 28px;
+  color: rgba(245,240,232,0.6);
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+#lightbox-close:hover { color: var(--gold2); }
+.cert-visual::after {
+  content: '🔍';
+  position: absolute;
+  bottom: 6px; right: 8px;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.cert-visual:hover::after { opacity: 1; }
+</style>
+</head>
+<body>
+<div class="cv-page">
+  <aside class="sidebar">
+    <div class="photo-wrap">
+      <div class="photo-frame">
+        <img src="https://cdn.phototourl.com/member/2026-05-16-43750d78-4960-4971-b880-65ced93847ac.jpg" alt="Ebubekir Sıddık Pekmez">
+      </div>
+      <div class="cv-name-side">Ebubekir Sıddık<br>Pekmez</div>
+      <div class="cv-title-side">İşletme Bölümü</div>
+    </div>
+    <div class="s-section">
+      <div class="s-heading">İletişim</div>
+      <div class="c-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="17" r="1"/></svg>+90 533 199 09 27</div>
+      <div class="c-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg><div>ebubekirpekmez@gmail.com<br>arikovanigida@gmail.com</div></div>
+      <div class="c-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>www.arikovanistore.com</div>
+      <div class="c-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Bursa Nilüfer Görükle</div>
+      <div class="c-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>25.12.2000 · 25 Yaş</div>
+    </div>
+    <div class="s-section">
+      <div class="s-heading">Eğitim</div>
+      <div class="edu-block"><div class="edu-level">Lise</div><div class="edu-school">Gaziantep Kolej Vakfı</div><div class="edu-date">2015 – 2019 · Not: 90,98</div></div>
+      <div class="edu-level" style="margin-top:10px;">Lisans</div>
+      <div class="edu-block"><div class="edu-school">Bolu Abant İzzet Baysal Ünv.</div><div class="edu-dept">Kimya</div><div class="edu-date">2020 – 2022</div></div>
+      <div class="edu-block"><div class="edu-school">Aydın Adnan Menderes Ünv.</div><div class="edu-dept">İşletme</div><div class="edu-date">2022 – 2023</div></div>
+      <div class="edu-block"><div class="edu-school">Bursa Uludağ Üniversitesi</div><div class="edu-dept">İşletme · GNO 3,28</div><div class="edu-date">2023 – Devam (Mezuniyet: Haziran 2026)</div></div>
+    </div>
+    <div class="s-section">
+      <div class="s-heading">Yetkinlikler</div>
+      <div class="skill-row">Çok Kanallı E-Ticaret Yönetimi (Shopify, Trendyol, Hepsiburada, Amazon TR)</div>
+      <div class="skill-row">Satış Stratejileri & Pazarlama Yönetimi</div>
+      <div class="skill-row">Meta Reklam Optimizasyonu & Sosyal Medya Yönetimi</div>
+      <div class="skill-row">Ürün Planlama, Fiyatlandırma & Operasyonel Süreçler</div>
+      <div class="skill-row">Veri Analizi & İçerik Üretimi (Excel, Canva, CapCut, Google Analytics)</div>
+    </div>
+    <div class="s-section">
+      <div class="s-heading">Referanslar</div>
+      <div class="ref-block"><div class="ref-name">Burak Esenkan</div><div class="ref-role">JTI – Bölgeler Satış Müdürü</div><div class="ref-phone">0 530 744 02 56</div></div>
+      <div class="ref-block"><div class="ref-name">Haydar Arslan</div><div class="ref-role">JTI – Bursa Satış Müdürü</div><div class="ref-phone">0 530 744 02 65</div></div>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="name-block">
+      <div class="main-name">Ebubekir <span>Sıddık</span><br>Pekmez</div>
+      <div class="main-title">E-Ticaret Girişimcisi<span class="gold-dot"></span>Dijital Pazarlama<span class="gold-dot"></span>İşletme</div>
+    </div>
+    <div class="m-heading">Hakkımda</div>
+    <p class="about-text">İşletme öğrencisi olarak eğitimime devam ederken kendi e-ticaret girişimimi kurup yönettim. <strong>Shopify, Trendyol, Hepsiburada</strong> ve <strong>Amazon Türkiye</strong> üzerinden <strong>doğal gıda, bebek</strong> ve <strong>hijyen</strong> ürünleri satış ve pazarlamasını gerçekleştirdim. Bu süreçte <strong>mağaza kurulumu, ürün listeleme, fiyatlandırma, müşteri iletişimi</strong> ve <strong>e-posta/WhatsApp otomasyonları</strong> gibi operasyonel süreçleri bizzat yönettim. <strong>Meta reklamları</strong> ve <strong>Instagram içerik yönetimi</strong> ile markamın görünürlüğünü artırarak satış hacmini büyüttüm. Bu deneyim bana <strong>analitik düşünme, stratejik planlama</strong> ve <strong>sonuç odaklı çalışma</strong> yetkinlikleri kazandırdı.</p>
+    <div class="m-heading">Deneyimler</div>
+    <div class="exp-item">
+      <div class="exp-left"><div class="exp-year">2021</div><div class="exp-dot"></div><div class="exp-line"></div></div>
+      <div class="exp-right">
+        <div class="exp-company">Trendyol & Hepsiburada & Amazon</div>
+        <div class="exp-role">İlk E-Ticaret Girişimi</div>
+        <ul class="exp-bullets">
+          <li>2021 yılında <strong>Trendyol</strong> ve <strong>Hepsiburada</strong> mağazalarını kurarak e-ticaret yolculuğuma başladım.</li>
+          <li>Mağaza altyapısını kurup <strong>ürün listeleme, fiyatlandırma</strong> ve <strong>operasyonel süreçleri</strong> uçtan uca yönettim.</li>
+          <li>Hâlen satış ve pazar yeri operasyonlarını aktif olarak sürdürmekteyim.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-left"><div class="exp-year">2024</div><div class="exp-dot"></div><div class="exp-line"></div></div>
+      <div class="exp-right">
+        <div class="exp-company">E-Ticaret & Dijital Pazarlama</div>
+        <div class="exp-role">Meta Reklamcılığı & Shopify Mağaza Kurulumu</div>
+        <ul class="exp-bullets">
+          <li>2024 yılında <strong>Meta reklamcılığı</strong> ve <strong>Shopify mağaza yönetimi</strong> üzerine eğitim alarak dijital pazarlama alanında uzmanlık kazandım.</li>
+          <li>Pazaryeri satışlarına ek olarak kendi e-ticaret sitemi kurarak markamın dijital varlığını güçlendirdim.</li>
+          <li>Mağaza tasarımı, ürün entegrasyonu, sosyal medya yönetimi ve <strong>Meta reklam kampanyalarını</strong> planlama–optimizasyon süreçlerini bizzat yönettim.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-left"><div class="exp-year">2025</div><div class="exp-dot"></div><div class="exp-line"></div></div>
+      <div class="exp-right">
+        <div class="exp-company">arikovanistore.com</div>
+        <div class="exp-role">E-Ticaret & Dijital Pazarlama</div>
+        <ul class="exp-bullets">
+          <li>2025 yılı içerisinde, <strong>150.000 TL reklam harcaması</strong> ile 3 farklı e-ticaret mağazasının (Shopify, Trendyol, Hepsiburada) operasyonlarını uçtan uca yöneterek toplam <strong>1 Milyon TL ciro hacmi</strong> gerçekleştirdim.</li>
+          <li><strong>Meta reklamcılığı</strong> ve <strong>sosyal medya yönetimi</strong> süreçlerini yürütmekteyim.</li>
+          <li>İşletme bölümünde eğitimime devam ediyor, son sınıf <strong>(4. sınıf)</strong> öğrencisi olarak akademik bilgi birikimimi e-ticaret deneyimimle birleştiriyorum.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-left"><div class="exp-year"></div><div class="exp-dot"></div><div class="exp-line"></div></div>
+      <div class="exp-right">
+        <div class="exp-company">JTI (Japan Tobacco International)</div>
+        <div class="exp-role">Satış Destek Elemanı (Merchandiser) | Eylül 2025</div>
+        <ul class="exp-bullets">
+          <li>Belirlenen rut üzerindeki satış noktalarında, JTI ürünlerinin tanzim-teşhir, stok takibi ve marka görünürlüğü görevlerini yürüttüm.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-left"><div class="exp-year">2026</div><div class="exp-dot"></div></div>
+      <div class="exp-right">
+        <div class="exp-company">Sosyal Medya Yöneticiliği</div>
+        <div class="exp-role">Vita Margarin – Aymar Yağ | Kasım 2025 – Ocak 2026</div>
+        <ul class="exp-bullets">
+          <li>Marka kimliğine uygun <strong>görsel içerikler tasarlayarak</strong> sosyal medya paylaşım takvimini uçtan uca yönettim.</li>
+          <li>Dijital platformlardaki <strong>müşteri iletişimini ve topluluk yönetimi</strong> operasyonlarını profesyonel standartlarda yürüttüm.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="m-heading">Staj</div>
+    <div class="staj-block">
+      <div class="staj-title">Predo Sağlık – Gönüllü Staj · 2024 (1 Ay)</div>
+      <div class="staj-text">Ürün geliştirme ve Ar-Ge süreçlerinde aktif rol alarak üretim aşamalarını yerinde gözlemledim ve proje ekiplerine destek sağladım.</div>
+    </div>
+  </main>
+</div>
+
+<div class="cert-page">
+  <div class="cert-page-title"><span>Sertifika</span>lar</div>
+  <div class="cert-subtitle">Profesyonel Gelişim & Dijital Yetkinlikler</div>
+  <div class="cert-grid">
+    <div class="cert-card"><div class="cert-visual"><img src="https://cdn.phototourl.com/free/2026-05-16-c39c78dc-7309-4e21-8da7-7cdbd9827b70.png" alt="HubSpot" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="cert-fallback">HubSpot Digital Marketing</div></div><div class="cert-info"><div class="cert-issuer">HubSpot Academy</div><div class="cert-name">Digital Marketing</div></div></div>
+    <div class="cert-card"><div class="cert-visual"><img src="https://cdn.phototourl.com/free/2026-05-16-83d41570-c965-47ec-8fe4-4eefb2b14422.jpg" alt="Google AI" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="cert-fallback">Google AI Reklamlar</div></div><div class="cert-info"><div class="cert-issuer">Google</div><div class="cert-name">Performansa Yönelik Yapay Zeka Destekli Reklamlar</div></div></div>
+    <div class="cert-card"><div class="cert-visual"><img src="https://cdn.phototourl.com/free/2026-05-16-9b26472f-0441-4f46-992b-78732fbe63e3.jpg" alt="Google Analytics" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="cert-fallback">Google Analytics</div></div><div class="cert-info"><div class="cert-issuer">Google</div><div class="cert-name">Google Analytics</div></div></div>
+    <div class="cert-card"><div class="cert-visual"><img src="https://cdn.phototourl.com/free/2026-05-16-b6e4916f-d5e0-4453-9532-dfc4d93ca42b.jpg" alt="Google Dönüşüm" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="cert-fallback">Dönüşüm Optimizasyonu</div></div><div class="cert-info"><div class="cert-issuer">Google</div><div class="cert-name">Dönüşüm Optimizasyonu</div></div></div>
+    <div class="cert-card"><div class="cert-visual"><img src="https://cdn.phototourl.com/free/2026-05-16-cad2d51e-a461-46f8-8c24-a4e2b23a824b.jpg" alt="Bilgeiş Çevrimiçi" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="cert-fallback">Çevrimiçi Reklamcılık</div></div><div class="cert-info"><div class="cert-issuer">Bilgeiş</div><div class="cert-name">Çevrimiçi Reklamcılık</div></div></div>
+    <div class="cert-card"><div class="cert-visual"><img src="https://cdn.phototourl.com/member/2026-05-16-f08c01bc-5185-4e23-8cfe-b030988253c4.jpg" alt="Bilgeiş İnternete" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="cert-fallback">İşinizi İnternete Taşıyın</div></div><div class="cert-info"><div class="cert-issuer">Bilgeiş</div><div class="cert-name">İşinizi İnternete Taşıyın</div></div></div>
+    <div class="cert-card"><div class="cert-visual"><img src="https://cdn.phototourl.com/member/2026-05-16-9a23caa7-90ed-489f-9e3a-7f889d9dd87f.jpg" alt="Bilgeiş Sosyal Medya" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="cert-fallback">İşiniz İçin Sosyal Medya</div></div><div class="cert-info"><div class="cert-issuer">Bilgeiş</div><div class="cert-name">İşiniz İçin Sosyal Medya</div></div></div>
+    <div class="cert-card"><div class="cert-visual"><img src="https://cdn.phototourl.com/member/2026-05-16-01205264-da60-472c-a078-f403d99a906a.jpg" alt="Amazon" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="cert-fallback">Amazon Ads Temel Bilgiler</div></div><div class="cert-info"><div class="cert-issuer">Amazon</div><div class="cert-name">Amazon Ads Temel Bilgiler</div></div></div>
+    <div class="cert-card"><div class="cert-visual"><img src="https://cdn.phototourl.com/member/2026-05-16-972cd84e-375d-4767-87f0-defc5822404b.jpg" alt="LinkedIn Dijital Pazarlama" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="cert-fallback">Dijital Pazarlama Esasları</div></div><div class="cert-info"><div class="cert-issuer">LinkedIn Learning</div><div class="cert-name">Dijital Pazarlama Esasları</div></div></div>
+    <div class="cert-card"><div class="cert-visual"><img src="https://cdn.phototourl.com/member/2026-05-16-fc35c03a-2896-428b-8756-8cb97bd6bf1a.jpg" alt="LinkedIn İkna" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="cert-fallback">İkna Edici Satış</div></div><div class="cert-info"><div class="cert-issuer">LinkedIn Learning</div><div class="cert-name">İkna Edici Satış</div></div></div>
+    <div class="cert-card"><div class="cert-visual"><img src="https://cdn.phototourl.com/member/2026-05-16-22aa3483-d731-4dca-9857-2462cf1b4f1d.jpg" alt="LinkedIn Ekipler" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="cert-fallback">Ekipleri Yönetmek</div></div><div class="cert-info"><div class="cert-issuer">LinkedIn Learning</div><div class="cert-name">Ekipleri Yönetmek</div></div></div>
+    <div class="cert-card"><div class="cert-visual"><img src="https://cdn.phototourl.com/member/2026-05-16-58a5da63-5c05-477b-a1d0-f5b65879f99f.jpg" alt="LinkedIn Sosyal Medya" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="cert-fallback">Sosyal Medya Pazarlama Esasları</div></div><div class="cert-info"><div class="cert-issuer">LinkedIn Learning</div><div class="cert-name">Sosyal Medya Pazarlama Esasları</div></div></div>
+  </div>
+</div>
+
+<div id="lightbox">
+  <span id="lightbox-close" onclick="closeLB()">✕</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+<script>
+document.querySelectorAll('.cert-visual').forEach(v => {
+  v.addEventListener('click', () => {
+    const img = v.querySelector('img');
+    if (!img || img.style.display === 'none') return;
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+});
+function closeLB() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLB();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
+</script>
+
+</body>
+</html>
